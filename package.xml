@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>chicken_head</name>
+  <version>0.1.0</version>
+  <description>Chicken Head Demo</description>
+
+  <maintainer email="juan@todo.todo">juan</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>champ_msgs</exec_depend>
+  <exec_depend>numpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>tf</exec_depend>
+</package>

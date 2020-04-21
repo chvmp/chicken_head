@@ -1,0 +1,13 @@
+<launch>
+    <include file="$(find champ_config)/launch/bringup.launch">
+        <arg name="description_file" value="$(find champ_description)/urdf/champ_arm.urdf"/>
+        <arg name="has_imu"          value="false"/>
+        <arg name="rviz"             value="true"/>
+    </include>
+
+    <node name="chicken_head" pkg="chicken_head" type="chicken_head.py"/>
+    
+    <include file="$(find champ_teleop)/launch/teleop.launch">
+        <arg name="joy"             value="true"/>
+    </include>
+</launch>
