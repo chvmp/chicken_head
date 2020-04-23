@@ -1,5 +1,5 @@
 # chicken_head
-Chicken head demo using a 5DOF manipulator CHAMP Quadruped Robot. 
+Chicken head demo using a 5DOF manipulator on CHAMP Quadruped Robot. 
 ![CHAMP Chicken Head](https://raw.githubusercontent.com/chvmp/chicken_head/master/docs/images/chickenhead.gif)
 
 ## Installation
