@@ -38,11 +38,6 @@ target_link_libraries(chicken_head_node chicken_head ${catkin_LIBRARIES})
 add_dependencies(chicken_head_node ${catkin_EXPORTED_TARGETS})
 add_dependencies(chicken_head ${catkin_EXPORTED_TARGETS})
 
-install(PROGRAMS
-  scripts/chicken_head.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
-
 install(TARGETS 
     chicken_head
     chicken_head_node
