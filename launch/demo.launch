@@ -5,9 +5,9 @@
         <arg name="rviz"             value="true"/>
     </include>
 
-    <!-- <node name="chicken_head" pkg="chicken_head" type="chicken_head.py"/>
+    <node name="chicken_head" pkg="chicken_head" type="chicken_head_node"/>
     
     <include file="$(find champ_teleop)/launch/teleop.launch">
         <arg name="joy"             value="true"/>
-    </include> -->
+    </include>
 </launch>
