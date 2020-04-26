@@ -93,6 +93,7 @@ void ChickenHead::controlLoop_(const ros::TimerEvent& event)
 
     sensor_msgs::JointState joint_states;
     
+    joint_states.header.stamp = ros::Time::now();
     joint_states.name.resize(joint_names.size());
     joint_states.position.resize(joint_names.size());
     joint_states.name = joint_names;
