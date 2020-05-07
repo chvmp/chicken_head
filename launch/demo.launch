@@ -8,7 +8,7 @@
     <node name="arm_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
         <param name="use_tf_static"     value="true"/>
         <param name="publish_frequency" value="200"/>
-        <remap from="/joint_states"     to="/champ/arm/joint_states" />
+        <remap from="joint_states"     to="arm/joint_states" />
     </node>
 
     <node name="chicken_head" pkg="chicken_head" type="chicken_head_node"/>

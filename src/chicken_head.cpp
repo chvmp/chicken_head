@@ -32,10 +32,10 @@ ChickenHead::ChickenHead(const ros::NodeHandle &node_handle,
     l1_(lower_to_upper_arm_[0]),
     l2_(upper_arm_to_wrist1_[0])
 {
-    joint_state_publisher_ = pnh_.advertise<sensor_msgs::JointState>("/champ/arm/joint_states", 100);
-    cmd_pose_subscriber_ = pnh_.subscribe( "/champ/cmd_pose", 1, &ChickenHead::cmdPoseCallback_, this);
+    joint_state_publisher_ = nh_.advertise<sensor_msgs::JointState>("arm/joint_states", 100);
+    cmd_pose_subscriber_ = nh_.subscribe("cmd_pose", 1, &ChickenHead::cmdPoseCallback_, this);
 
-    pnh_.getParam("/champ/gait/nominal_height", nominal_height_);
+    nh_.getParam("gait/nominal_height", nominal_height_);
 
     loop_timer_ = pnh_.createTimer(ros::Duration(0.005),
                                    &ChickenHead::controlLoop_,
