@@ -28,8 +28,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "ros/ros.h"
 #include <geometry_msgs/Quaternion.h>
+#include <geometry_msgs/Pose.h>
 #include <champ_msgs/Pose.h>
 #include <sensor_msgs/JointState.h>
+#include "tf/transform_datatypes.h"
 #include <Eigen/Dense>
 
 class ChickenHead
@@ -57,7 +59,7 @@ class ChickenHead
     float l2_;
 
     Vector3d rotate(const Vector3d, const float alpha, const float phi, const float beta);
-    void cmdPoseCallback_(const champ_msgs::Pose::ConstPtr& msg);
+    void cmdPoseCallback_(const geometry_msgs::Pose::ConstPtr& msg);
     void controlLoop_(const ros::TimerEvent& event);
     public:
         ChickenHead(const ros::NodeHandle &node_handle,

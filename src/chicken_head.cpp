@@ -33,7 +33,7 @@ ChickenHead::ChickenHead(const ros::NodeHandle &node_handle,
     l2_(upper_arm_to_wrist1_[0])
 {
     joint_state_publisher_ = nh_.advertise<sensor_msgs::JointState>("arm/joint_states", 100);
-    cmd_pose_subscriber_ = nh_.subscribe("cmd_pose", 1, &ChickenHead::cmdPoseCallback_, this);
+    cmd_pose_subscriber_ = nh_.subscribe("body_pose", 1, &ChickenHead::cmdPoseCallback_, this);
 
     nh_.getParam("gait/nominal_height", nominal_height_);
 
@@ -114,13 +114,20 @@ void ChickenHead::controlLoop_(const ros::TimerEvent& event)
     joint_state_publisher_.publish(joint_states);
 }
 
-void ChickenHead::cmdPoseCallback_(const champ_msgs::Pose::ConstPtr& msg)
+void ChickenHead::cmdPoseCallback_(const geometry_msgs::Pose::ConstPtr& msg)
 {
-    req_pose_.roll = msg->roll;
-    req_pose_.pitch = msg->pitch;
-    req_pose_.yaw = msg->yaw;
+    tf::Quaternion quat(
+        msg->orientation.x,
+        msg->orientation.y,
+        msg->orientation.z,
+        msg->orientation.w);
+    tf::Matrix3x3 m(quat);
+    double roll, pitch, yaw;
+    m.getRPY(roll, pitch, yaw);
+    
+    req_pose_.roll = roll;
+    req_pose_.pitch = pitch;
+    req_pose_.yaw = yaw;
 
-    req_pose_.z = msg->z * nominal_height_;
-    if(req_pose_.z < (nominal_height_ * 0.5))
-        req_pose_.z = nominal_height_ * 0.5;
+    req_pose_.z = msg->position.z +  nominal_height_;
 }
