@@ -40,6 +40,11 @@ ChickenHead::ChickenHead(const ros::NodeHandle &node_handle,
     loop_timer_ = pnh_.createTimer(ros::Duration(0.005),
                                    &ChickenHead::controlLoop_,
                                    this);
+
+    req_pose_.roll = 0.0;
+    req_pose_.pitch = 0.0;
+    req_pose_.yaw = 0.0;
+    req_pose_.z = nominal_height_;
 }
 
 Eigen::Vector3d ChickenHead::rotate(const Vector3d pos, const float alpha, const float phi, const float beta)
